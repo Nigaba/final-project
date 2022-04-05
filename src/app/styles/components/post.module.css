@@ -1,0 +1,13 @@
+.post {
+	border: 1px solid black;
+	border-radius: 4px;
+	margin: 16px;
+	padding: 8px;
+}
+.title {
+	font-size: xx-large;
+}
+.desc {
+	text-align: left;
+	
+}
