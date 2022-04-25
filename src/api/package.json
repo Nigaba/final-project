@@ -1,0 +1,16 @@
+{
+	"name": "node-api",
+	"type": "module",
+	"version": "1.0.0",
+	"private": true,
+	"main": "server.js",
+	"license": "MIT",
+	"scripts": {
+		"prestart": "yarn",
+		"start": "node server.js"
+	},
+	"dependencies": {
+		"express": "^4.17.3",
+		"mysql2": "^2.3.3"
+	}
+}
