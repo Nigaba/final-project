@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 import {PersonSection} from '../components/personSection';
 
@@ -23,10 +22,10 @@ export default function Home({coaches, players}) {
   )
 }
 export const getStaticProps = async ({ params }) => {
-	const coaches = await fetch('http://node-api:8080/coaches')
+	const coaches = await fetch('http://node-api:8080/coach')
 		.then(res => res.json())
 		.catch(err => {console.log(err); return []});
-  const players = await fetch('http://node-api:8080/players')
+  const players = await fetch('http://node-api:8080/player`')
 		.then(res => res.json())
 		.catch(err => {console.log(err); return []});
 	return { props: { coaches, players } };

@@ -1,8 +1,7 @@
-import Head from 'next/head'
-import Image from 'next/image'
+import Head from 'next/head';
 
-import Post from '../components/post';
-import styles from '../styles/Home.module.css';
+import Post from '../../components/post';
+import styles from '../../styles/Home.module.css';
 
 interface PostData {
   imgUrl?: string,

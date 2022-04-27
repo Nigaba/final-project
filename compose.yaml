@@ -13,20 +13,6 @@ services:
       - /home/node/app/.next
     command: "yarn start"
 
-  node-api:
-    image: node:lts-alpine
-    restart: "no"
-    networks:
-      - frontend
-      - backend
-    ports:
-      - "8082:8080"
-    user: node
-    working_dir: /home/node/app
-    volumes:
-      - ./src/api:/home/node/app:rw
-    command: "yarn start"
-
 # DATABASE LAYER
   mysql-db:
     image: mysql:8-oracle
@@ -50,6 +36,36 @@ services:
       - backend
     ports:
       - "8084:8080"
+
+# Middleware
+  node-api:
+    image: node:lts-alpine
+    restart: "no"
+    depends_on:
+      - mysql-db
+    networks:
+      - frontend
+      - backend
+    ports:
+      - "8082:8080"
+    user: node
+    working_dir: /home/node/app
+    volumes:
+      - ./src/api:/home/node/app:rw
+    command: "yarn start"
+
+  # api-viewer:
+  #   image: swaggerapi/swagger-ui:latest
+  #   restart: "no"
+  #   networks:
+  #     - frontend
+  #   ports:
+  #     - "8088:8080"
+  #   volumes:
+  #     - ./src/api/doc:/usr/share/nginx/html/doc
+  #   environment:
+  #     URLS: "[{ url: 'doc/openapi.yml', name: 'UseAPI'}]"
+
 networks:
   frontend:
   backend:

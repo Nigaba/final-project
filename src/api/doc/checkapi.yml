@@ -1,0 +1,13 @@
+openapi: 3.0.0
+info:
+  title: Check API documentation
+  version: 1.0.0
+servers:
+  - url: http://node-api:8080/
+paths:
+  /check:
+    get:
+      summary: Check if Server is Running
+      responses:
+        '200':
+          description: Successful response

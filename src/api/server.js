@@ -1,14 +1,9 @@
 import express from 'express';
 import { createConnection } from 'mysql2';
 
-import playerRoute from './data/players.js';
-import coachRoute from './data/coaches.js';
-// enable CORS without external module
-// app.use(function (req, res, next) {
-// 	res.header("Access-Control-Allow-Origin", "*");
-// 	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-// 	next();
-// });
+import playerRoute from './data/player.js';
+import coachRoute from './data/coach.js';
+import rosterRoute from './data/roster.js';
 
 const DB_CONN = await createConnection({
 	host: 'mysql-db',
@@ -18,12 +13,19 @@ const DB_CONN = await createConnection({
 });
 
 const app = express();
+// enable CORS without external module
+app.use((req, res, next) => {
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+	next();
+});
 
 app.get('/', (req, res) => {
 	// res.writeHead(200/*, {'Content-Type': 'text/plain'}*/);
 	res.send('Hello API!');
 });
-app.get('/players', playerRoute(DB_CONN));
-app.get('/coaches', coachRoute(DB_CONN));
+app.use('/player', playerRoute(DB_CONN));
+app.use('/coach', coachRoute(DB_CONN));
+app.use('/roster', rosterRoute(DB_CONN));
 
 app.listen(8080);
