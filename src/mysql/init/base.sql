@@ -66,4 +66,13 @@ CREATE TABLE `PlayerStats` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
--- 2022-04-27 08:12:59
+DROP TABLE IF EXISTS `Posts`;
+CREATE TABLE `Posts` (
+  `ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `Title` text NOT NULL,
+  `Body` longtext NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+-- 2022-04-27 23:15:21

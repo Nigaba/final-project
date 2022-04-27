@@ -15,7 +15,6 @@ interface Props {
 }
 
 export function PersonSection({title, people}: Props) {
-	console.table(people);
 	return (
 		<section>
 			<h1>{title}</h1>
@@ -34,6 +33,6 @@ const PersonCard = ({person}: CardProps) => (
 	<article className={styles.personCard}>
 		<img className={styles.img} src={`/images/person/${person?.ImageFile ?? 'no-img.png'}`}/>
 		<h3 className={styles.name}>{person.Name.toString()}</h3>
-		<p className={styles.desc}>{`${person.Desc??''}`}<br/><Link href={`${person.Role.toLowerCase()}/[pid]`} as={`${person.Role.toLowerCase()}/${person.ID}`}>Read More</Link></p>
+		<p className={styles.desc}>{`${person.Desc??''}`}<br/><Link href={`${person.Role.toLowerCase()}/[pid]`} as={`${person.Role.toLowerCase()}/${person.ID}`}>Read More &gt;</Link></p>
   	</article>
 );

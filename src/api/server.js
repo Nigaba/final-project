@@ -4,6 +4,7 @@ import { createConnection } from 'mysql2';
 import playerRoute from './data/player.js';
 import coachRoute from './data/coach.js';
 import rosterRoute from './data/roster.js';
+import postRoute from './data/post.js';
 
 const DB_CONN = await createConnection({
 	host: 'mysql-db',
@@ -26,6 +27,7 @@ app.get('/', (req, res) => {
 });
 app.use('/player', playerRoute(DB_CONN));
 app.use('/coach', coachRoute(DB_CONN));
+app.use('/post', postRoute(DB_CONN));
 app.use('/roster', rosterRoute(DB_CONN));
 
 app.listen(8080);
